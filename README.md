@@ -1,96 +1,94 @@
-# Título do Projeto: Agente de Aprendizagem por Reforço para o Jogo Snake (Projeto Final ISCTE)
+# Project Title: Reinforcement Learning Agent for the Snake Game (ISCTE Final Project)
 
-**Unidade Curricular**: Aprendizagem Não Supervisionada e Reforço  
-**Autor**: Ouhao Wu  
-**Número de Aluno**: 123542
-
----
-
-## 1. Visão Geral do Projeto (Project Overview)
-
-Este é um projeto personalizado de Aprendizagem por Reforço (RL). A tarefa central consistiu em projetar e implementar um ambiente para o jogo "Snake", utilizando a framework **Gymnasium**, e, nesse ambiente, treinar e comparar dois algoritmos clássicos de RL: **Q-Learning** e **SARSA**.
-
-O projeto visa demonstrar a compreensão dos princípios fundamentais da Aprendizagem por Reforço, incluindo a construção do ambiente, o desenho do espaço de estados, a engenharia da função de recompensa, a implementação dos algoritmos e a avaliação dos modelos.
-
-### Principais Características (Key Features):
-
-*   **Arquitetura Modular**: O projeto segue as melhores práticas de engenharia de software, desacoplando a lógica do ambiente, do agente, do treino e da análise em módulos distintos.
-*   **Ambiente Normalizado**: O ficheiro `snake_gym_env.py` implementa um ambiente personalizado que cumpre integralmente com a API padrão do Gymnasium.
-*   **Engenharia de Features**: Para superar o problema da explosão do espaço de estados, foi desenhada uma representação de estado compacta com 10 features-chave, o que aumentou drasticamente a eficiência de aprendizagem dos métodos tabulares.
-*   **Comparação de Algoritmos**: Implementação completa dos algoritmos Q-Learning (Off-Policy) e SARSA (On-Policy), com visualização comparativa do seu treino e desempenho.
-*   **Processo de Avaliação Completo**: Oferece um fluxo de trabalho completo, desde o treino e teste visual até à análise de dados em lote.
+**Curricular Unit**: Unsupervised and Reinforcement Learning
+**Author**: Ouhao Wu
+**Student Number**: 123542
 
 ---
 
-## 2. Estrutura do Projeto (Project Structure)
+## 1. Project Overview
+
+This is a custom Reinforcement Learning (RL) project. The central task consisted of designing and implementing an environment for the game "Snake", using the **Gymnasium** framework, and, in this environment, training and comparing two classic RL algorithms: **Q-Learning** and **SARSA**.
+
+The project aims to demonstrate the understanding of the fundamental principles of Reinforcement Learning, including the construction of the environment, the design of the state space, the engineering of the reward function, the implementation of the algorithms and the evaluation of the models.
+
+### Key Features:
+
+* **Modular Architecture**: The project follows software engineering best practices, decoupling the environment, agent, training, and analysis logic into distinct modules.
+* **Normalized Environment**: The `snake_gym_env.py` file implements a custom environment that fully complies with the Gymnasium standard API.
+* **Feature Engineering**: To overcome the state space explosion problem, a compact state representation was designed with 10 key features, which dramatically increased the learning efficiency of tabular methods.
+* **Algorithm Comparison**: Full implementation of the Q-Learning (Off-Policy) and SARSA (On-Policy) algorithms, with comparative visualization of their training and performance.
+* **Complete Evaluation Process**: Provides a complete workflow, from visual training and testing to batch data analysis.
+
+---
+
+## 2. Project Structure
 
 ```
 ISCTE_RL_Project/
-├── run_project.py           # (Ponto de Entrada) Executar este ficheiro para iniciar o menu
-├── snake_gym_env.py         # (Ambiente) Implementação do ambiente Gymnasium personalizado
-├── agents.py                # (Agentes) Definição das classes dos algoritmos Q-Learning e SARSA
-├── training.py              # (Lógica de Treino) Funções para treinar, comparar e jogar manualmente
-├── analysis.py              # (Script de Análise) Para análise aprofundada e visualização dos modelos treinados
-├── requirements.txt         # (Dependências) Todas as bibliotecas Python necessárias
-└── README.md                # (Documentação) Este ficheiro de instruções
+├── run_project.py # (Entry Point) Run this file to launch the menu
+├── snake_gym_env.py # (Environment) Implementation of the custom Gymnasium environment
+├── agents.py # (Agents) Definition of the Q-Learning and SARSA algorithm classes
+├── training.py # (Training Logic) Functions for training, comparing and playing manually
+├── analysis.py # (Analysis Script) For in-depth analysis and visualization of the trained models
+├── requirements.txt # (Dependencies) All required Python libraries
+└── README.md # (Documentation) This file contains the following instructions
 ```
 
 ---
 
-## 3. Guia de Instalação (Installation)
+## 3. Installation Guide
 
-1.  **Clonar ou Descarregar o Projeto**: Extraia os ficheiros do projeto para uma pasta local.
+1. **Clone or Download Project**: Extract the project files to a local folder.
 
-2.  **Instalar Python**: Garanta que tem o Python 3.8 ou superior instalado.
+2. **Install Python**: Ensure that you have Python 3.8 or higher installed.
 
-3.  **Instalar Dependências**: Abra um terminal ou linha de comandos, navegue até à pasta raiz do projeto e execute o seguinte comando para instalar todas as bibliotecas necessárias:
-    ```bash
-    pip install -r requirements.txt
-    ```
+3. **Installing Dependencies**: Open a terminal or command line, navigate to the project root folder and run the following command to install all required libraries:
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
-## 4. Como Executar (How to Run)
+## 4. How to Run
 
-Todas as operações são iniciadas através do ficheiro `run_project.py`. No terminal, execute:
+All operations are initiated through the `run_project.py` file. In the terminal, run:
 
 ```bash
 python run_project.py
 ```
 
-O programa irá apresentar um menu interativo. Pode selecionar as diferentes operações de acordo com as instruções:
+The program will present an interactive menu. You can select the different operations according to the instructions:
 
 ```
-=============================================
-   ISCTE Final Project: RL Snake Game
-=============================================
+==============================================
+ISCTE Final Project: RL Snake Game
+===============================================
 1. Train & Compare Q-Learning vs. SARSA
-2. Play game with trained Q-Learning agent
-3. Play game with trained SARSA agent
+2. Play game with agent trained in Q-Learning
+3. Play game with agent trained in SARSA
 4. Play game manually
-5. Run full analysis on trained models
+5. Perform full analysis on trained models
 6. Exit
 ---------------------------------------------
 Enter your choice (1-6):
 ```
 
-### Descrição das Opções do Menu:
+### Description of Menu Options:
 
-*   **Opção 1**: **Treinar e Comparar Modelos**.
-    *   Ser-lhe-á pedido para inserir o número de episódios para o treino (sugere-se 2000 ou mais).
-    *   Treina sequencialmente os agentes Q-Learning e SARSA.
-    *   Após o treino, serão gerados os ficheiros `q_learning_snake.pkl` e `sarsa_snake.pkl` na pasta do projeto.
-    *   Simultaneamente, será exibido um gráfico Matplotlib com a comparação das curvas de aprendizagem, que será também guardado como `comparison_results.png`.
+* **Option 1**: **Train and Compare Models**.
+* You will be prompted to enter the number of episodes for training (2,000 or more is suggested).
+* Trains the Q-Learning and SARSA agents sequentially. * After training, the `q_learning_snake.pkl` and `sarsa_snake.pkl` files will be generated in the project folder.
+* Simultaneously, a Matplotlib graph will be displayed comparing the learning curves, which will also be saved as `comparison_results.png`.
 
-*   **Opção 2 & 3**: **Ver um Agente Treinado a Jogar**.
-    *   Carrega o ficheiro do modelo `.pkl` correspondente.
-    *   Abre uma janela Pygame para demonstrar em tempo real o processo de decisão do agente. Esta é a melhor forma de avaliar o comportamento final do agente.
+* **Option 2 & 3**: **Watch a Trained Agent Play**.
+* Loads the corresponding `.pkl` model file.
+* Opens a Pygame window to demonstrate the agent's decision process in real time. This is the best way to evaluate the agent's final behavior.
 
-*   **Opção 4**: **Jogar Manualmente**.
-    *   Permite-lhe experimentar o ambiente do jogo. Use as teclas de seta para controlar, 'R' para recomeçar e 'Q' para sair.
+* **Option 4**: **Play Manually**.
+* Allows you to experience the game environment. Use the arrow keys to control, 'R' to start over and 'Q' to exit.
 
-*   **Opção 5**: **Executar Análise Aprofundada**.
-    *   **(É necessário executar a opção 1 primeiro para gerar os ficheiros dos modelos)**
-    *   Esta opção executa o script `analysis.py` para realizar uma avaliação de desempenho detalhada e gerar múltiplos gráficos de análise.
+* **Option 5**: **Perform Deep Analysis**. * **(You must run option 1 first to generate the model files)**
+* This option runs the `analysis.py` script to perform a detailed performance evaluation and generate several analysis graphs.
 
-*   **Opção 6**: **Sair do Programa**.
+* **Option 6**: **Exit Program**.
